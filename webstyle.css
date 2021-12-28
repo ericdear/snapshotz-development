@@ -229,3 +229,12 @@ footer {
 .text a:hover {
     color: blueviolet;
 }
+
+/* for co op */
+.coop {
+    font-size: larger;
+    color: white;
+    margin-right: 14%;
+    padding-bottom: 5%;
+    margin-left: 14%;
+}
