@@ -9,6 +9,36 @@ body {
     color: white;
 }
 
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+header {
+    position: absolute;
+    top: 20px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    margin-right: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
 .container {
     text-align: center;
 }
