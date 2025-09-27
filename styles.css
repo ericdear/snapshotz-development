@@ -1,12 +1,30 @@
 body {
     margin: 0;
-    height: 100vh;
+    height: 100vh; /* full screen */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* stack sections */
     background: linear-gradient(135deg, #8d3ee2, #0d2a5c);
     font-family: Arial, sans-serif;
     color: white;
+}
+
+.container {
+    flex: 1; /* takes 1 part */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.other-apps {
+    flex: 2; /* keeps 2/3 height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* move to top */
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
 }
 
 .logo {
@@ -16,6 +34,7 @@ body {
 }
 
 header {
+    flex: 1
     position: absolute;
     top: 20px;
     width: 90%;
@@ -39,10 +58,6 @@ nav a:hover {
     text-decoration: underline;
 }
 
-.container {
-    text-align: center;
-}
-
 .store-badge {
     width: 150px;
     height: auto;
@@ -54,4 +69,85 @@ nav a:hover {
     margin-right: 14%;
     padding-bottom: 5%;
     margin-left: 14%;
+}
+
+.other-apps h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: white; /* keep consistent with theme */
+}
+
+.app-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.app-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    width: 140px;  /* smaller width so two fit side by side on phones */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+}
+
+.app-card img.icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+}
+
+.app-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.store-links {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.store-links img {
+    height: auto;
+}
+
+.store-links img.apple {
+    width: 130px; /* bigger */
+}
+
+.store-links img.google {
+    width: 110px; /* a little smaller */
+}
+
+@media (max-width: 600px) {
+    .app-card {
+        width: 100px;
+        padding: 0.5rem; /* shrink padding too */
+    }
+
+    .app-card img.icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .store-links img {
+        width: 70px;
+    }
+    
+    .store-links img.apple {
+    width: 80px; /* bigger */
+}
+
+.store-links img.google {
+    width: 60px; /* a little smaller */
+}
+
+    .app-card h3 {
+        font-size: 0.8rem;
+    }
 }
