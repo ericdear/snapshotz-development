@@ -1,27 +1,35 @@
 body {
     margin: 0;
-    height: 100vh; /* full screen */
+    height: 100vh;
+    /* full screen */
     display: flex;
-    flex-direction: column; /* stack sections */
+    flex-direction: column;
+    /* stack sections */
     background: linear-gradient(135deg, #8d3ee2, #0d2a5c);
     font-family: Arial, sans-serif;
     color: white;
 }
 
 .container {
-    flex: 1; /* takes 1 part */
+    flex: 4;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    /* push content to top */
     align-items: center;
     text-align: center;
+    padding-top: 20px;
+    /* optional extra space */
 }
 
+
 .other-apps {
-    flex: 2; /* keeps 2/3 height */
+    flex: 2;
+    /* keeps 2/3 height */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* move to top */
+    justify-content: flex-start;
+    /* move to top */
     align-items: center;
     padding: 1rem;
     text-align: center;
@@ -34,14 +42,15 @@ body {
 }
 
 header {
-    flex: 1
-    position: absolute;
-    top: 20px;
-    width: 90%;
+    flex: 1;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: top;
+    margin-top: 20px;
 }
+
+
 
 nav {
     margin-right: 20px;
@@ -74,7 +83,8 @@ nav a:hover {
 .other-apps h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
-    color: white; /* keep consistent with theme */
+    color: white;
+    /* keep consistent with theme */
 }
 
 .app-grid {
@@ -88,13 +98,14 @@ nav a:hover {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 1rem;
-    width: 140px;  /* smaller width so two fit side by side on phones */
+    width: 140px;
+    /* smaller width so two fit side by side on phones */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     text-align: center;
     color: white;
 }
 
-.app-card img.icon {
+img.icon {
     width: 60px;
     height: 60px;
     border-radius: 12px;
@@ -107,27 +118,31 @@ nav a:hover {
 
 .store-links {
     display: flex;
-    flex-direction: column; /* stack vertically */
+    flex-direction: column;
+    /* stack vertically */
     align-items: center;
     gap: 0.5rem;
 }
 
 .store-links img {
-    height: auto;
+    width: 110px;
 }
 
 .store-links img.apple {
-    width: 130px; /* bigger */
+    width: 130px;
+    /* bigger */
 }
 
 .store-links img.google {
-    width: 110px; /* a little smaller */
+    width: 110px;
+    /* a little smaller */
 }
 
 @media (max-width: 600px) {
     .app-card {
         width: 100px;
-        padding: 0.5rem; /* shrink padding too */
+        padding: 0.5rem;
+        /* shrink padding too */
     }
 
     .app-card img.icon {
@@ -138,14 +153,13 @@ nav a:hover {
     .store-links img {
         width: 70px;
     }
-    
-    .store-links img.apple {
-    width: 80px; /* bigger */
-}
 
-.store-links img.google {
-    width: 60px; /* a little smaller */
-}
+    .store-links img.apple {
+        width: 80px;
+        /* bigger */
+    }
+
+
 
     .app-card h3 {
         font-size: 0.8rem;
