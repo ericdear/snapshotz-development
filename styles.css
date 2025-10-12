@@ -41,6 +41,13 @@ body {
     margin-left: 20px;
 }
 
+.instagram-logo {
+    width: 40px;
+    height: auto;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
 header {
     flex: 1;
     width: 100%;
