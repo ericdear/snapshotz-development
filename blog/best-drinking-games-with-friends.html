@@ -60,7 +60,6 @@
         <div class="toc" aria-label="Table of contents">
             <strong>Jump to:</strong>
             <ul>
-                <li><a href="#quick-picks">Quick picks (fast ideas)</a></li>
                 <li><a href="#classic">Classic drinking games</a></li>
                 <li><a href="#no-cards">Card-free drinking games</a></li>
                 <li><a href="#apps">App-based drinking games (phone games)</a></li>
@@ -78,45 +77,6 @@
                 Keep water around, respect “no thanks,” and make sure everyone can get home safely.
             </p>
         </div>
-
-        <section id="quick-picks">
-            <h2>Quick picks: fun drinking games with friends</h2>
-            <p>
-                If you just want ideas fast, here are a few “formats” that work for almost any group. You can run these
-                with cards, cups,
-                or even just your phone.
-            </p>
-
-            <div class="grid">
-                <div class="card">
-                    <h3>Best for big groups</h3>
-                    <ul>
-                        <li><strong>Team games</strong> (easy to rotate and keep everyone included)</li>
-                        <li><strong>Vote-based rounds</strong> (funny, social, low setup)</li>
-                        <li><strong>“Guess who/what” prompts</strong> (great for mixed friend groups)</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Best for small groups</h3>
-                    <ul>
-                        <li><strong>Quick challenge rounds</strong> (short turns, lots of replay value)</li>
-                        <li><strong>Storytime prompts</strong> (chaotic in the best way)</li>
-                        <li><strong>Photo-based games</strong> (turn your memories into the game)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cta">
-                <p><strong>Want a zero-setup game that hits every time?</strong> Snapshotz turns your camera roll into a
-                    party game with prompts like “guess whose photo,” “guess the location,” and “worst photo.”</p>
-                <div class="btns">
-                    <a class="btn primary" href="https://apps.apple.com/ca/app/snapshotz/id6740501616">Download
-                        Snapshotz</a>
-                    <a class="btn" href="https://snapshotzdev.com">Back to Snapshotz</a>
-                </div>
-            </div>
-        </section>
 
         <section id="classic">
             <h2>Classic drinking games (the crowd favorites)</h2>
@@ -246,7 +206,11 @@
                 <p><strong>Pro tip:</strong> If you like vote-based games, Snapshotz basically turns that energy into a
                     full party flow using your own photos.</p>
                 <div class="btns">
-                    <a class="btn primary" href="https://apps.apple.com/ca/app/snapshotz/id6740501616">Try Snapshotz</a>
+                    <a class="btn primary js-download"
+                        href="https://apps.apple.com/ca/app/snapshotz/id6740501616"
+                        data-ios="https://apps.apple.com/ca/app/snapshotz/id6740501616"
+                        data-android="https://play.google.com/store/apps/details?id=com.snapshotzdev.snapshotz&pcampaignid=web_share"
+                        data-android-intent="intent://open#Intent;scheme=snapshotz;package=com.snapshotzdev.snapshotz;end">Try Snapshotz</a>
                     <a class="btn ghost" href="https://www.instagram.com/reel/XXXXXXXXX/" target="_blank"
                         rel="noopener">See how it works</a>
                 </div>
@@ -301,7 +265,11 @@
                 <div class="cta">
                     <p><strong>Ready to play?</strong> Start a room and let the camera roll do the rest.</p>
                     <div class="btns">
-                        <a class="btn primary" href="https://apps.apple.com/ca/app/snapshotz/id6740501616">Download
+                        <a class="btn primary js-download"
+                            href="https://apps.apple.com/ca/app/snapshotz/id6740501616"
+                            data-ios="https://apps.apple.com/ca/app/snapshotz/id6740501616"
+                            data-android="https://play.google.com/store/apps/details?id=com.snapshotzdev.snapshotz&pcampaignid=web_share"
+                            data-android-intent="intent://open#Intent;scheme=snapshotz;package=com.snapshotzdev.snapshotz;end">Download
                             Snapshotz</a>
                         <a class="btn ghost" href="https://www.instagram.com/reel/XXXXXXXXX/" target="_blank"
                             rel="noopener">How to Play</a>
@@ -359,8 +327,16 @@
                 <p><strong>If you want a photo party game app built around these modes, that’s exactly what Snapshotz
                         is.</strong></p>
                 <div class="btns">
-                    <a class="btn primary" href="https://apps.apple.com/ca/app/snapshotz/id6740501616">Get Snapshotz</a>
-                    <a class="btn" href="https://apps.apple.com/ca/app/snapshotz/id6740501616">See what people say</a>
+                    <a class="btn primary js-download"
+                        href="https://apps.apple.com/ca/app/snapshotz/id6740501616"
+                        data-ios="https://apps.apple.com/ca/app/snapshotz/id6740501616"
+                        data-android="https://play.google.com/store/apps/details?id=com.snapshotzdev.snapshotz&pcampaignid=web_share"
+                        data-android-intent="intent://open#Intent;scheme=snapshotz;package=com.snapshotzdev.snapshotz;end">Get Snapshotz</a>
+                    <a class="btn js-download"
+                        href="https://apps.apple.com/ca/app/snapshotz/id6740501616"
+                        data-ios="https://apps.apple.com/ca/app/snapshotz/id6740501616"
+                        data-android="https://play.google.com/store/apps/details?id=com.snapshotzdev.snapshotz&pcampaignid=web_share"
+                        data-android-intent="intent://open#Intent;scheme=snapshotz;package=com.snapshotzdev.snapshotz;end">See what people say</a>
                 </div>
             </div>
         </section>
@@ -463,6 +439,39 @@
 
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
+
+        const downloadLinks = document.querySelectorAll(".js-download");
+        const isAndroid = /Android/i.test(navigator.userAgent);
+
+        downloadLinks.forEach((link) => {
+            const iosUrl = link.dataset.ios;
+            const androidUrl = link.dataset.android;
+            const androidIntent = link.dataset.androidIntent;
+
+            if (!link.getAttribute("href") && iosUrl) {
+                link.setAttribute("href", iosUrl);
+            }
+
+            link.addEventListener("click", (event) => {
+                if (!isAndroid) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                if (androidIntent) {
+                    window.location.href = androidIntent;
+                    setTimeout(() => {
+                        window.location.href = androidUrl;
+                    }, 800);
+                    return;
+                }
+
+                if (androidUrl) {
+                    window.location.href = androidUrl;
+                }
+            });
+        });
     </script>
 </body>
 
