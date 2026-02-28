@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Task Trade</title>
+    <meta name="robots" content="noindex" />
+</head>
+
+<body>
+    <div style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; padding: 24px;">
+        Redirecting…
+    </div>
+
+    <script type="module">
+        // ----- Read tracking params
+        const params = new URLSearchParams(window.location.search);
+        const loc = (params.get("loc") || "unknown").toLowerCase();   // franks / trappers / royal
+        const camp = (params.get("c") || "coaster").toLowerCase();   // optional campaign tag
+
+        // ----- Detect platform
+        const ua = navigator.userAgent || "";
+        const isIOS = /iphone|ipad|ipod/i.test(ua);
+        const isAndroid = /android/i.test(ua);
+
+        // TODO: replace these
+        const IOS_URL = "https://apps.apple.com/ca/app/snapshotz/id6740501616";
+        const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.snapshotzdev.snapshotz";
+        const FALLBACK_URL = "https://snapshotzdev.com";
+
+        const dest = isIOS ? IOS_URL : (isAndroid ? ANDROID_URL : FALLBACK_URL);
+
+        // ----- Firebase Firestore logging (public write-only)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBZpdRkV_kLEVieD4jQ1AcKmh2q7u25puo",
+            authDomain: "snapshotz-app.firebaseapp.com",
+            projectId: "snapshotz-app",
+            //storageBucket: "snapshotz-app.firebasestorage.app",
+            //messagingSenderId: "615599898193",
+            appId: "1:615599898193:web:c908fcad089eac91b50270",
+            //measurementId: "G-DV7TH4SRRE"
+        };
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+
+            await addDoc(collection(db, "qr_scans"), {
+                app: "snapshotz",
+                loc,
+                camp,
+                dest,
+                ua,
+                ref: document.referrer || "direct",
+                // Not storing raw IP here (browser can’t access it anyway)
+                ts: serverTimestamp(),
+            });
+        } catch (e) {
+            // If logging fails, still redirect
+            console.warn("QR scan log failed", e);
+        }
+
+        // ----- Redirect
+        window.location.replace(dest);
+    </script>
+</body>
+
+</html>
