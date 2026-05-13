@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /tt/
+
+Sitemap: https://snapshotzdev.com/sitemap.xml
