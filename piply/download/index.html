@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Piply</title>
+    <meta name="robots" content="noindex" />
+</head>
+
+<body>
+    <div style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; padding: 24px;">
+        Redirecting to Piply...
+    </div>
+
+    <script>
+        const IOS_URL = "https://apps.apple.com/app/id6759636847";
+        const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.snapshotzdev.piply";
+        const FALLBACK_URL = "https://snapshotzdev.com/piply/";
+
+        const ua = navigator.userAgent || "";
+        const platform = navigator.userAgentData && navigator.userAgentData.platform
+            ? navigator.userAgentData.platform
+            : navigator.platform || "";
+
+        const isAndroid = /android/i.test(ua);
+        const isIOS = /iphone|ipad|ipod/i.test(ua);
+        const isIPadOS = /mac/i.test(platform) && navigator.maxTouchPoints > 1;
+
+        const dest = isAndroid ? ANDROID_URL : (isIOS || isIPadOS ? IOS_URL : FALLBACK_URL);
+
+        window.location.replace(dest);
+    </script>
+</body>
+
+</html>
