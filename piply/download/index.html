@@ -9,8 +9,15 @@
 </head>
 
 <body>
-    <div style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; padding: 24px;">
-        Redirecting to Piply...
+    <div style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width: 520px; padding: 24px;">
+        <h1 style="font-size: 24px; margin: 0 0 8px;">Opening Piply...</h1>
+        <p style="margin: 0 0 20px; color: #444;">
+            If the store does not open automatically, use one of the links below.
+        </p>
+        <p style="display: flex; flex-wrap: wrap; gap: 12px; margin: 0;">
+            <a id="ios-link" href="https://apps.apple.com/app/id6759636847">App Store</a>
+            <a id="android-link" href="https://play.google.com/store/apps/details?id=com.snapshotzdev.piply">Google Play</a>
+        </p>
     </div>
 
     <script>
@@ -29,7 +36,7 @@
 
         const dest = isAndroid ? ANDROID_URL : (isIOS || isIPadOS ? IOS_URL : FALLBACK_URL);
 
-        window.location.replace(dest);
+        window.location.href = dest;
     </script>
 </body>
 
