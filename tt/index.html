@@ -24,8 +24,8 @@
         const isIOS = /iphone|ipad|ipod/i.test(ua);
         const isAndroid = /android/i.test(ua);
 
-        const IOS_URL = "itms-apps://itunes.apple.com/app/id6740501616";
-        const ANDROID_URL = "market://details?id=com.snapshotzdev.snapshotz";
+        const IOS_URL = "https://apps.apple.com/ca/app/snapshotz/id6740501616";
+        const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.snapshotzdev.snapshotz";
         const FALLBACK_URL = "https://snapshotzdev.com/snapshotz";
 
         const dest = isIOS ? IOS_URL : (isAndroid ? ANDROID_URL : FALLBACK_URL);
