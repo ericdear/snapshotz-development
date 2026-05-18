@@ -24,12 +24,13 @@
         const isIOS = /iphone|ipad|ipod/i.test(ua);
         const isAndroid = /android/i.test(ua);
 
-        // TODO: replace these
-        const IOS_URL = "https://apps.apple.com/ca/app/snapshotz/id6740501616";
-        const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.snapshotzdev.snapshotz";
-        const FALLBACK_URL = "https://snapshotzdev.com";
+        const IOS_APP_URL = "itms-apps://itunes.apple.com/app/id6740501616";
+        const IOS_WEB_URL = "https://apps.apple.com/ca/app/snapshotz/id6740501616";
+        const ANDROID_APP_URL = "market://details?id=com.snapshotzdev.snapshotz";
+        const ANDROID_WEB_URL = "https://play.google.com/store/apps/details?id=com.snapshotzdev.snapshotz";
+        const FALLBACK_URL = "https://snapshotzdev.com/snapshotz";
 
-        const dest = isIOS ? IOS_URL : (isAndroid ? ANDROID_URL : FALLBACK_URL);
+        const dest = isIOS ? IOS_APP_URL : (isAndroid ? ANDROID_APP_URL : FALLBACK_URL);
 
         // ----- Firebase Firestore logging (public write-only)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
@@ -65,7 +66,27 @@
         }
 
         // ----- Redirect
-        window.location.replace(dest);
+        function openStore(appUrl, webUrl) {
+            let fallbackTimer = window.setTimeout(() => {
+                window.location.href = webUrl;
+            }, 1200);
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) {
+                    window.clearTimeout(fallbackTimer);
+                }
+            }, { once: true });
+
+            window.location.href = appUrl;
+        }
+
+        if (isIOS) {
+            openStore(IOS_APP_URL, IOS_WEB_URL);
+        } else if (isAndroid) {
+            openStore(ANDROID_APP_URL, ANDROID_WEB_URL);
+        } else {
+            window.location.replace(FALLBACK_URL);
+        }
     </script>
 </body>
 

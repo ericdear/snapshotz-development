@@ -21,8 +21,10 @@
     </div>
 
     <script>
-        const IOS_URL = "https://apps.apple.com/app/id6759636847";
-        const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.snapshotzdev.piply";
+        const IOS_APP_URL = "itms-apps://itunes.apple.com/app/id6759636847";
+        const IOS_WEB_URL = "https://apps.apple.com/app/id6759636847";
+        const ANDROID_APP_URL = "market://details?id=com.snapshotzdev.piply";
+        const ANDROID_WEB_URL = "https://play.google.com/store/apps/details?id=com.snapshotzdev.piply";
         const FALLBACK_URL = "https://snapshotzdev.com/piply/";
 
         const ua = navigator.userAgent || "";
@@ -34,9 +36,27 @@
         const isIOS = /iphone|ipad|ipod/i.test(ua);
         const isIPadOS = /mac/i.test(platform) && navigator.maxTouchPoints > 1;
 
-        const dest = isAndroid ? ANDROID_URL : (isIOS || isIPadOS ? IOS_URL : FALLBACK_URL);
+        function openStore(appUrl, webUrl) {
+            let fallbackTimer = window.setTimeout(() => {
+                window.location.href = webUrl;
+            }, 1200);
 
-        window.location.href = dest;
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) {
+                    window.clearTimeout(fallbackTimer);
+                }
+            }, { once: true });
+
+            window.location.href = appUrl;
+        }
+
+        if (isAndroid) {
+            openStore(ANDROID_APP_URL, ANDROID_WEB_URL);
+        } else if (isIOS || isIPadOS) {
+            openStore(IOS_APP_URL, IOS_WEB_URL);
+        } else {
+            window.location.href = FALLBACK_URL;
+        }
     </script>
 </body>
 
