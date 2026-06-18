@@ -14,14 +14,26 @@
   </url>
   <url>
     <loc>https://snapshotzdev.com/piply/</loc>
-    <lastmod>2026-05-13</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://snapshotzdev.com/blog/</loc>
-    <lastmod>2026-05-13</lastmod>
+    <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snapshotzdev.com/piply/blog/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snapshotzdev.com/piply/blog/nyt-pips-alternatives</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
