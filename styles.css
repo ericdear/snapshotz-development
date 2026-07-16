@@ -570,11 +570,12 @@ img {
 
     .hero-copy h1,
     .home-hero h1 {
-        font-size: clamp(2.65rem, 14vw, 4.1rem);
+        font-size: clamp(2.25rem, 11vw, 3.25rem);
+        line-height: 1;
     }
 
     .home-hero {
-        padding: 38px 0 20px;
+        padding: 28px 0 14px;
     }
 
     .home-hero p {
