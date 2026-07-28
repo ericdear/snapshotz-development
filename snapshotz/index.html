@@ -87,6 +87,35 @@
             </div>
         </section>
     </main>
+    <script>
+        (() => {
+            const downloadParams = new URLSearchParams(window.location.search);
+
+            if (downloadParams.get("download") !== "1") {
+                return;
+            }
+
+            const IOS_URL = "https://apps.apple.com/ca/app/snapshotz/id6740501616";
+            const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.snapshotzdev.snapshotz";
+            const FALLBACK_URL = IOS_URL;
+
+            const ua = navigator.userAgent || "";
+            const platform = navigator.userAgentData && navigator.userAgentData.platform
+                ? navigator.userAgentData.platform
+                : navigator.platform || "";
+
+            const isAndroid = /android/i.test(ua);
+            const isIOS = /iphone|ipad|ipod/i.test(ua);
+            const isIPadOS = /mac/i.test(platform) && navigator.maxTouchPoints > 1;
+            const dest = isAndroid ? ANDROID_URL : (isIOS || isIPadOS ? IOS_URL : FALLBACK_URL);
+
+            requestAnimationFrame(() => {
+                window.setTimeout(() => {
+                    window.location.href = dest;
+                }, 350);
+            });
+        })();
+    </script>
 </body>
 
 </html>
