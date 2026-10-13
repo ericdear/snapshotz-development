@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Join Word Crack Room</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        .join-panel {
+            text-align: center;
+        }
+
+        .room-code {
+            display: block;
+            margin: 24px 0;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #222;
+        }
+
+        .open-button {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 6px;
+            background: #007BFF;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .open-button:hover {
+            text-decoration: none;
+            background: #005fcc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container join-panel">
+        <h1>Join Word Crack</h1>
+        <span class="room-code">Room Code: <span id="room-code">Not provided</span></span>
+        <a id="open-word-crack" class="open-button" href="wordcrack://join">Open Word Crack</a>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code') || '';
+        const codeText = code || 'Not provided';
+
+        document.getElementById('room-code').textContent = codeText;
+
+        const openLink = document.getElementById('open-word-crack');
+        openLink.href = code
+            ? `wordcrack://join?code=${encodeURIComponent(code)}`
+            : 'wordcrack://join';
+    </script>
+</body>
+
+</html>

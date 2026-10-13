@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.snapshotzdev.wordcrack",
+      "sha256_cert_fingerprints": [
+        "60:22:CE:7C:90:9C:62:08:B5:B6:3F:8B:FF:AE:7C:56:12:70:2F:65:09:21:7B:4F:91:65:C6:8D:D7:8F:74:1B",
+        "0A:DF:6F:27:23:AB:69:C3:30:17:2A:68:11:17:72:1C:B8:99:C0:C8:52:B0:93:6E:3B:4D:40:EE:00:F2:75:D6"
+      ]
+    }
+  }
+]

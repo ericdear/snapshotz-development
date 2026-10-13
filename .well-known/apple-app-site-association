@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TW8V5K933C.com.snapshotzdev.wordcrack",
+        "paths": [
+          "/word-crack/join*"
+        ]
+      }
+    ]
+  }
+}
