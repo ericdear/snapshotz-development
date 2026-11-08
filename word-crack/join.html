@@ -51,9 +51,17 @@
         document.getElementById('room-code').textContent = codeText;
 
         const openLink = document.getElementById('open-word-crack');
-        openLink.href = code
+        const deepLink = code
             ? `wordcrack://join?code=${encodeURIComponent(code)}`
             : 'wordcrack://join';
+
+        openLink.href = deepLink;
+
+        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            window.setTimeout(() => {
+                window.location.href = deepLink;
+            }, 200);
+        }
     </script>
 </body>
 
