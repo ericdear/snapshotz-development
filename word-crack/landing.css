@@ -441,6 +441,34 @@ img {
         padding-top: 34px;
     }
 
+    .hero-copy {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-copy > .eyebrow {
+        align-self: flex-start;
+        order: 1;
+    }
+
+    .hero-copy > h1 {
+        order: 2;
+    }
+
+    .hero-copy > .store-badges {
+        order: 3;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .hero-copy > p {
+        order: 4;
+    }
+
+    .hero-copy > .mode-pills {
+        order: 5;
+    }
+
     .hero h1 {
         font-size: clamp(3.1rem, 16vw, 4.7rem);
     }
